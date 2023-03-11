@@ -29,7 +29,7 @@ class ClassroomController extends Controller
 
                 $My_Classes->save();
             }
-                // toastr()->success(trans('main_trans.success'));
+                toastr()->success('تم حفظ الصفوف بنجاح');
                 return redirect()->route('Classrooms.index');
             }
             catch(\Exception $e)
@@ -48,7 +48,7 @@ class ClassroomController extends Controller
             $Classrooms->name_class = $request->Name,
             $Classrooms->grade_id = $request->Grade_id,
             ]);
-            // toastr()->success(trans('main_trans.success'));
+            toastr()->success('تم تعديل الصف بنجاح');
             return redirect()->route('Classrooms.index');
         }
         catch(\Exception $e)
@@ -60,7 +60,7 @@ class ClassroomController extends Controller
     public function destroy(ClassroomRequest $request)
     {
         $Classrooms = Classroom::findOrFail($request->id)->delete(); 
-        // toastr()->warning(trans('main_trans.delete'));
+        toastr()->error('تم حذف الصف بنجاح');
         return redirect()->route('Classrooms.index');
     }
 
@@ -69,7 +69,7 @@ class ClassroomController extends Controller
         $delete_all_id = explode(",", $request->delete_all_id);
 
         Classroom::whereIn('id', $delete_all_id)->Delete();
-        // toastr()->error(trans('main_trans.delete'));
+        toastr()->warning('تم حذف الصفوف بنجاح');
         return redirect()->route('Classrooms.index');
     }
 

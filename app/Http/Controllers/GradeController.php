@@ -24,7 +24,7 @@ class GradeController extends Controller
             $Grade->name = $request->Name;
             $Grade->notes = $request->Notes;
             $Grade->save();
-            // toastr()->success(trans('main_trans.success'));
+            toastr()->success('تم حفظ المرحلة بنجاح');
             return redirect()->route('Grades.index');
         }
         catch(\Exception $e)
@@ -43,7 +43,7 @@ class GradeController extends Controller
                 $Grade->name = $request->Name,
                 $Grade->notes = $request->Notes,
             ]);
-            // toastr()->success(trans('main_trans.update'));
+            toastr()->success('تم تعديل المرحلة بنجاح');
             return redirect()->route('Grades.index');
         }
         catch(\Exception $e)
@@ -62,13 +62,13 @@ class GradeController extends Controller
     if($MyClass_id->count() == 0){
 
         $Grades = Grade::findOrFail($request->id)->delete();
-        // toastr()->error(trans('main_trans.delete'));
+        toastr()->error('تم حذف المرحلة بنجاح');
         return redirect()->route('Grades.index');
     }
 
     else{
 
-        // toastr()->error(trans('main_trans.delete_Grade_Error'));
+        toastr()->warning(' لايمكن حذف المرحلة بسبب وجود صفوف تابعة لها احذف الصفوف ثم احذف المرحلة');
         return redirect()->route('Grades.index');
     }
 }

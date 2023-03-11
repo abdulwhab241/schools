@@ -25,4 +25,12 @@ class GradeRequest extends FormRequest
             'Name'=>'required|unique:grades,Name,'.$this->id,
         ];
     }
+
+    // public function messages()
+    // {
+    //     return [
+    //         'Name.required' => ('validation.required'),
+    //         'Name.unique' => {{ 'validation.unique' }},
+    //     ];
+    // }
 }

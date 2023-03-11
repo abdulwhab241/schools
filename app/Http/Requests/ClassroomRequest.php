@@ -22,8 +22,16 @@ class ClassroomRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'List_Classes.*.Name'=>'required',
+            'List_Classes.*.Name'=>'required|unique:classrooms,name_class',
             'List_Classes.*.Grade_id'=>'required',
         ];
     }
+
+    // public function messages()
+    // {
+    //     return [
+    //         'Name.required' => 'validation.required',
+    //         'Name.unique' => 'validation.unique',
+    //     ];
+    // }
 }
