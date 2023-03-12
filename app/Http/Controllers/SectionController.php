@@ -12,12 +12,8 @@ class SectionController extends Controller
 {
     public function index()
     {
-        // $TeacherWithSection = Teacher::with(['SectionsWith'])->get();
         $Grades = Grade::with(['Sections'])->get();
-
         $list_Grades = Grade::all();
-        // $teachers = Teacher::all();
-    
         return view('pages.Sections.index',compact('Grades','list_Grades'));
     }
 
@@ -32,9 +28,7 @@ class SectionController extends Controller
             $Sections->grade_id = $request->Grade_id;
             $Sections->class_id = $request->Class_id;
             $Sections->save();
-            // $Sections->teachers()->attach($request->teacher_id);
-            toastr()->success(trans('main_trans.success'));
-    
+            toastr()->success('تم حفظ القسم بنجاح');
             return redirect()->route('Sections.index');
         }
     
@@ -53,34 +47,12 @@ class SectionController extends Controller
         $Sections->name_section = $request->Name_Section;
         $Sections->grade_id = $request->Grade_id;
         $Sections->class_id = $request->Class_id;
-
-        // $Sections->update([
-        //     $Sections->Name_Section = $request->Name_Section,
-        //     $Sections->Grade_id = $request->Grade_id,
-        //     $Sections->Class_id = $request->Class_id,
-        // ]);
-
-        // if(isset($request->Status)) {
-        //     $Sections->Status = 1;
-        // } else {
-        //     $Sections->Status = 2;
-        // }
-
-
-        //    // update pivot tABLE
-        // if (isset($request->teacher_id)) {
-        //     $Sections->teachers()->sync($request->teacher_id);
-        // } else {
-        //     $Sections->teachers()->sync(array());
-        // }
-
         $Sections->save();
-        toastr()->success(trans('main_trans.update'));
+        toastr()->success('تم تعديل القسم بنجاح');
 
         return redirect()->route('Sections.index');
     }
-    catch
-    (\Exception $e) {
+    catch (\Exception $e) {
         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }
 
@@ -89,7 +61,7 @@ class SectionController extends Controller
     public function destroy(Request $request)
     {
         Section::findOrFail($request->id)->delete();
-        toastr()->error(trans('main_trans.delete'));
+        toastr()->error('تم حذف القسم بنجاح');
         return redirect()->route('Sections.index');
     }
 

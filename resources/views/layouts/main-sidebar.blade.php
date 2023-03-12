@@ -279,6 +279,34 @@ header End-->
                 <li><a href="{{route('Sections.index')}}">قائمة الأقسـام</a></li>
             </ul>
         </li>
+        <!-- Teachers-->
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Teachers-menu">
+                <div class="pull-left"><i class="fas fa-chalkboard-teacher"></i></i><span
+                        class="right-nav-text">المعلمين</span></div>
+                <div class="pull-right"><i class="ti-plus"></i></div>
+                <div class="clearfix"></div>
+            </a>
+            <ul id="Teachers-menu" class="collapse" data-parent="#sidebarnav">
+                <li> <a href="{{route('Teachers.index')}}">قائمة المعلمين</a> </li>
+            </ul>
+        </li>
+        <!-- Accounts-->
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Accounts-menu">
+                <div class="pull-left"><i class="fas fa-money-bill-wave-alt"></i><span
+                        class="right-nav-text">الحسابات</span></div>
+                <div class="pull-right"><i class="ti-plus"></i></div>
+                <div class="clearfix"></div>
+            </a>
+            <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
+                <li> <a href="{{route('Fees.index')}}">الرسوم الدراسية</a> </li>
+                {{-- <li> <a href="{{route('Fees_Invoices.index')}}">الفواتير</a> </li>
+                <li> <a href="{{route('receipt_students.index')}}">سندات القبض</a> </li>
+                <li> <a href="{{route('ProcessingFee.index')}}">استبعاد رسوم</a> </li>
+                <li> <a href="{{route('Payment_students.index')}}">سندت الصرف</a> </li> --}}
+            </ul>
+        </li>
         <!-- menu item calendar-->
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">

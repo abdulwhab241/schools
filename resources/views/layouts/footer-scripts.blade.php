@@ -45,7 +45,7 @@
     <script src="{{ URL::asset('assets/js/bootstrap-datatables/ar/dataTables.bootstrap4.min.js') }}"></script>
 {{-- @endif --}}
 
-{{-- <script>
+<script>
     function CheckAll(className, elem) {
         var elements = document.getElementsByClassName(className);
         var l = elements.length;
@@ -165,5 +165,5 @@
             }
         });
     });
-</script> --}}
+</script> 
 

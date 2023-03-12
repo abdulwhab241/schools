@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SectionRequest extends FormRequest
+class TeacherRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,14 @@ class SectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Name_Section' => 'required',
-            'Grade_id' => 'required',
-            'Class_id' => 'required',
+            'Email' => 'required|unique:teachers,email,'.$this->id,
+            'Password' => 'required',
+            'Name' => 'required',
+            'Phone_Number' => 'required|integer',
+            'Specialization_id' => 'required',
+            'Gender_id' => 'required',
+            'Joining_Date' => 'required|date|date_format:Y-m-d',
+            'Address' => 'required',
         ];
     }
 }

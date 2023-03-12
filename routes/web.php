@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
 
 /*
@@ -38,4 +39,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::resource('Sections', SectionController::class);
     Route::get('/classes/{id}', [SectionController::class, 'get_classes']);
+});
+
+//==============================Teachers============================
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    Route::resource('Teachers', TeacherController::class);
+});
+
+//==============================Fees============================
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    Route::resource('Fees',  FeeController::class);
 });
