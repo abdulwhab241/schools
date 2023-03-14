@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
 
@@ -49,4 +50,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 //==============================Fees============================
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::resource('Fees',  FeeController::class);
+});
+//==============================Subjects============================
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    Route::resource('Subjects', SubjectController::class);
 });

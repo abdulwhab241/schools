@@ -33,14 +33,15 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+                    @if(session()->has('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{ session()->get('error') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
                     @endif
 
                     <form method="post" action="{{ route('Fees.store') }}" autocomplete="off">
@@ -49,17 +50,17 @@
                             <div class="form-group col">
                                 <label for="inputEmail4">أسم الرسوم</label>
                                 <input type="text" value="{{ old('title') }}" name="title" class="form-control">
+                                @error('title')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
-
-                            {{-- <div class="form-group col">
-                                <label for="inputEmail4">الاسم باللغة الانجليزية</label>
-                                <input type="text" value="{{ old('title_en') }}" name="title_en" class="form-control">
-                            </div> --}}
-
 
                             <div class="form-group col">
                                 <label for="inputEmail4">المبلغ</label>
                                 <input type="number" value="{{ old('amount') }}" name="amount" class="form-control">
+                                @error('amount')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                         </div>
@@ -75,6 +76,9 @@
                                         <option value="{{ $Grade->id }}">{{ $Grade->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('Grade_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group col">
@@ -82,6 +86,9 @@
                                 <select class="custom-select mr-sm-2" name="Classroom_id">
 
                                 </select>
+                                @error('Classroom_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col">
                                 <label for="inputZip">السنة الدراسية</label>
@@ -94,6 +101,9 @@
                                         <option value="{{ $year}}">{{ $year }}</option>
                                     @endfor
                                 </select>
+                                @error('year')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
@@ -101,8 +111,10 @@
                             <label for="inputZip">نوع الرسوم</label>
                             <select class="custom-select mr-sm-2" name="Fee_type">
                                 <option value="1">رسوم دراسية</option>
-                                <option value="2">رسوم باص</option>
                             </select>
+                            @error('Fee_type')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 

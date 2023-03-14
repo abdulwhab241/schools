@@ -37,13 +37,9 @@
 
 
 
-{{-- @if (App::getLocale() == 'en')
-    <script src="{{ URL::asset('assets/js/bootstrap-datatables/en/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/bootstrap-datatables/en/dataTables.bootstrap4.min.js') }}"></script>
-@else --}}
     <script src="{{ URL::asset('assets/js/bootstrap-datatables/ar/jquery.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/bootstrap-datatables/ar/dataTables.bootstrap4.min.js') }}"></script>
-{{-- @endif --}}
+
 
 <script>
     function CheckAll(className, elem) {
@@ -72,9 +68,8 @@
                     dataType: "json",
                     success: function (data) {
                         $('select[name="Classroom_id"]').empty();
-                        $('select[name="Classroom_id"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
+                        $('select[name="Classroom_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
                         $.each(data, function (key, value) {
-                            // $('select[name="Classroom_id"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
                             $('select[name="Classroom_id"]').append('<option value="' + key + '">' + value + '</option>');
                         });
                     },
@@ -127,9 +122,8 @@
                     dataType: "json",
                     success: function (data) {
                         $('select[name="Classroom_id_new"]').empty();
-                        $('select[name="Classroom_id_new"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
+                        $('select[name="Classroom_id_new"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
                         $.each(data, function (key, value) {
-                            // $('select[name="Classroom_id_new"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
                             $('select[name="Classroom_id_new"]').append('<option value="' + key + '">' + value + '</option>');
                         });
                     },

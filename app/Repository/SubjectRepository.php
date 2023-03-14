@@ -29,12 +29,13 @@ class SubjectRepository implements SubjectRepositoryInterface
     {
         try {
             $subjects = new Subject();
-            $subjects->name =  $request->Name;
-            $subjects->grade_id = $request->Grade_id;
-            $subjects->classroom_id = $request->Class_id;
-            $subjects->teacher_id = $request->teacher_id;
+            $subjects->name = strip_tags($request->Name);
+            $subjects->degree = strip_tags($request->Degree);
+            $subjects->grade_id = strip_tags($request->Grade_id);
+            $subjects->classroom_id = strip_tags($request->Class_id);
+            $subjects->teacher_id = strip_tags($request->teacher_id);
             $subjects->save();
-            toastr()->success(trans('messages.success'));
+            toastr()->success('تم حفظ المادة بنجاح');
             return redirect()->route('Subjects.create');
         }
         catch (\Exception $e) {
@@ -56,12 +57,13 @@ class SubjectRepository implements SubjectRepositoryInterface
     {
         try {
             $subjects =  Subject::findOrFail($request->id);
-            $subjects->name =  $request->Name;
-            $subjects->grade_id = $request->Grade_id;
-            $subjects->classroom_id = $request->Class_id;
-            $subjects->teacher_id = $request->teacher_id;
+            $subjects->name = strip_tags($request->Name);
+            $subjects->degree = strip_tags($request->Degree);
+            $subjects->grade_id = strip_tags($request->Grade_id);
+            $subjects->classroom_id = strip_tags($request->Class_id);
+            $subjects->teacher_id = strip_tags($request->teacher_id);
             $subjects->save();
-            toastr()->success(trans('messages.Update'));
+            toastr()->success('تم تعديل المادة بنجاح');
             return redirect()->route('Subjects.create');
         }
         catch (\Exception $e) {
@@ -73,7 +75,7 @@ class SubjectRepository implements SubjectRepositoryInterface
     {
         try {
             Subject::destroy($request->id);
-            toastr()->error(trans('messages.Delete'));
+            toastr()->error('تم حذف المادة بنجاح');
             return redirect()->back();
         }
 
